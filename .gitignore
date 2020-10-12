@@ -1,0 +1,6 @@
+*/obj/
+*/bin/
+.vscode
+obj/
+bin/
+Extra.txt
