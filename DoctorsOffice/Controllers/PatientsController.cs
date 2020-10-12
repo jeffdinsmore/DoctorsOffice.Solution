@@ -7,8 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DoctorsOffice.Controllers
 {
-  public class PatientsController : controller
+  public class PatientsController : Controller
   {
+    private readonly DoctorsOfficeContext _db;
+
+    public PatientsController(DoctorsOfficeContext db)
+    {
+      _db = db;
+    }
+
     public ActionResult Index()
     {
       List<Patient> model = _db.Patients.Include(patients => patients.Doctor).ToList();
