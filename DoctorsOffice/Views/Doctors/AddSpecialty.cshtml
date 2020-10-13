@@ -1,0 +1,17 @@
+@model DoctorsOffice.Models.Doctor
+
+<h2>Add a Specialty</h2>
+
+<h4>Add a specialty to this doctor: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.DoctorId)
+
+  @Html.Label("Select Specialty")
+  @Html.DropDownList("SpecialtyId")
+
+  <input type="submit" value="Save" class="btn btn-success btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Doctor List", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>
