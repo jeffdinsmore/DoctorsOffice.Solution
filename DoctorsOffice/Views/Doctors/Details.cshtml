@@ -7,7 +7,27 @@
 
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 @* <h3>@Html.DisplayNameFor(model => model.Specialty): @Html.DisplayFor(model => model.Specialty)</h3> *@
-
+@if(Model.Specialties.Count == 0)
+{
+  <p>This doctor does not have any specialties.</p>
+}
+else
+{
+  <h4>Specialties:</h4>
+  <ul>
+  @foreach(var join in Model.Specialties)
+  {
+    <li>@Html.ActionLink($"{join.Specialty.SpecialtyName}", "Details", "Specialties", new { id = join.Specialty.SpecialtyId })</li>
+    @using (Html.BeginForm("DeleteSpecialty", "Doctors"))
+    {
+      @Html.Hidden("doctorId", @join.DoctorId)
+      @Html.Hidden("joinId", @join.DoctorSpecialtyId)
+      <input type="submit" value="Delete" class="btn btn-warning btn-xs" />
+    }
+  }
+  </ul>
+}
+<br>
 @if(Model.Patients.Count == 0)
 {
   <p>This doctor does not have any patients currently assigned.</p>
