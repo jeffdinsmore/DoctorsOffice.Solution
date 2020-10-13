@@ -61,3 +61,6 @@ div#footer {
   background:#333;
   padding:10px;
 }
+.btn-warning {
+  color: darkred;
+}

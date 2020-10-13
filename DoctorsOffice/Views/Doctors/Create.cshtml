@@ -11,8 +11,10 @@
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
   
-  @Html.LabelFor(model => model.Specialty)
-  @Html.TextBoxFor(model => model.Specialty)
+  @* @Html.LabelFor(model => model.Specialty)
+  @Html.TextBoxFor(model => model.Specialty) *@
 
   <input type="submit" value="Add Doctor" class="btn btn-success btn-sm" />
 }
+<br>
+<p>@Html.ActionLink("Cancel", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>

@@ -19,10 +19,16 @@ else
   @foreach(var join in Model.Doctors)
   {
     <li>@Html.ActionLink($"{join.Doctor.Name}", "Details", "Doctors", new { id = join.Doctor.DoctorId })</li>
+    @using (Html.BeginForm("DeleteDoctor", "Patients"))
+    {
+      @Html.Hidden("joinId", @join.DoctorPatientId)
+      <input type="submit" value="Delete" class="btn btn-warning btn-xs" />
+    }
   }
   </ul>
 }
 <br>
 <p>@Html.ActionLink("Edit Patient", "Edit", "Patients", new { id = Model.PatientId } , new {@class="btn btn-success btn-sm"})</p>
 <p>@Html.ActionLink("Add a Doctor", "AddDoctor", "Patients", new { id = Model.PatientId } , new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId }, new {@class="btn btn-danger btn-sm"})</p>
 <p>@Html.ActionLink("Back to Patients", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>

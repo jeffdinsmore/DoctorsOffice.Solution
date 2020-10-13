@@ -69,13 +69,31 @@ namespace DoctorsOffice.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Patient patient, int DoctorId)
+    public ActionResult Edit(Patient patient)
     {
-      if (DoctorId != 0)
-      {
-        _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = DoctorId, PatientId = patient.PatientId });
-      }
       _db.Entry(patient).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Delete(int id)
+    {
+      var thisPatient = _db.Patients.FirstOrDefault(patients => patients.PatientId == id);
+      return View(thisPatient);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisPatient = _db.Patients.FirstOrDefault(patients => patients.PatientId == id);
+      _db.Patients.Remove(thisPatient);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    [HttpPost]
+    public ActionResult DeleteDoctor(int joinId)
+    {
+      var joinEntry = _db.DoctorPatient.FirstOrDefault(entry => entry.DoctorPatientId == joinId);
+      _db.DoctorPatient.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
