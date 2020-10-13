@@ -22,7 +22,7 @@ namespace DoctorsOffice.Controllers
     }
     public ActionResult Create()
     {
-      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "PatientName");
+      ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
       return View();
     }
 
