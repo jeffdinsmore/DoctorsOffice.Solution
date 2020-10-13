@@ -18,8 +18,7 @@ namespace DoctorsOffice.Controllers
 
     public ActionResult Index()
     {
-      List<Patient> model = _db.Patients.Include(patients => patients.Doctor).ToList();
-      return View(model);
+      return View(_db.Patients.ToList());
     }
     public ActionResult Create()
     {
@@ -33,6 +32,14 @@ namespace DoctorsOffice.Controllers
       _db.Patients.Add(patient);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+    public ActionResult Details (int id)
+    {
+      var thisPatient = _db.Patients
+        .Include(patient => patient.Doctors)
+        .ThenInclude(join => join.Doctor)
+        .FirstOrDefault(patient => patient.PatientId == id);
+      return View(thisPatient);
     }
   }
 }

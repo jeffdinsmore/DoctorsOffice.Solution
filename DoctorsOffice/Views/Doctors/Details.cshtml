@@ -15,9 +15,13 @@ else
 {
   <h4>Patients currently under care:</h4>
   <ul>
-  @foreach(var patient in Model.Patients)
+  @foreach(var join in Model.Patients)
   {
     <li>@join.Patient.PatientName</li>
   }
   </ul>
 }
+<br>
+<p>@Html.ActionLink("Back to doctors", "Index", null, null, new {@class="btn btn-success btn-sm"})</p>
+@* <p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p> *@

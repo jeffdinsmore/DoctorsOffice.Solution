@@ -6,11 +6,11 @@ namespace DoctorsOffice.Models
   {
     public Doctor()
     {
-      this.Patients = new HashSet<Patient>();
+      this.Patients = new HashSet<DoctorPatient>();
     }
     public int DoctorId { get; set; }
     public string Name { get; set; }
     public string Specialty { get; set; }
-    public virtual ICollection<Patient> Patients { get; set; }
+    public virtual ICollection<DoctorPatient> Patients { get; set; }
   }
 }
