@@ -23,5 +23,5 @@ else
   </ul>
 }
 <br>
-<p>@Html.ActionLink("Add a Doctor", "AddDoctor", "Patients", null, new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Doctor", "AddDoctor", "Patients", new { id = Model.PatientId } , new {@class="btn btn-success btn-sm"})</p>
 <p>@Html.ActionLink("Back to Patients", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>
