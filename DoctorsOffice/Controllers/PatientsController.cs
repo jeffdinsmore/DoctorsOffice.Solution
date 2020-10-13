@@ -59,8 +59,9 @@ namespace DoctorsOffice.Controllers
       {
       _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = DoctorId, PatientId = patient.PatientId });
       }
+      _db.Entry(patient).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Index","Doctors");
+      return RedirectToAction("Index");
     }
   }
 }

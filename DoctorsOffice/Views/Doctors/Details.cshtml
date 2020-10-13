@@ -18,12 +18,12 @@ else
   <ul>
   @foreach(var join in Model.Patients)
   {
-    <li>@join.Patient.PatientName</li>
+    <li>@Html.ActionLink($"{join.Patient.PatientName}", "Details", "Patients", new { id = join.Patient.PatientId })</li>
   }
   </ul>
 }
 <br>
 <p>@Html.ActionLink("Add a Patient", "Create", "Patients", null, new {@class="btn btn-success btn-sm"})</p>
-<p>@Html.ActionLink("Back to doctors", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>
+<p>@Html.ActionLink("Back to Doctors", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>
 @* <p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p>
 <p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p> *@
