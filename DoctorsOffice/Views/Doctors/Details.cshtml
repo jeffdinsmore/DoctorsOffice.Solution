@@ -41,6 +41,7 @@ else
     <li>@Html.ActionLink($"{join.Patient.PatientName}", "Details", "Patients", new { id = join.Patient.PatientId })</li>
     @using (Html.BeginForm("DeletePatient", "Doctors"))
     {
+      @Html.Hidden("doctorId", @join.DoctorId)
       @Html.Hidden("joinId", @join.DoctorPatientId)
       <input type="submit" value="Delete" class="btn btn-warning btn-xs" />
     }

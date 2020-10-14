@@ -19,8 +19,9 @@ else
   @foreach(var join in Model.Doctors)
   {
     <li>@Html.ActionLink($"{join.Doctor.Name}", "Details", "Doctors", new { id = join.Doctor.DoctorId })</li>
-    @using (Html.BeginForm("DeleteDoctor", "Specialtys"))
+    @using (Html.BeginForm("DeleteDoctor", "Specialties"))
     {
+      @Html.Hidden("specialtyId", @join.SpecialtyId)
       @Html.Hidden("joinId", @join.DoctorSpecialtyId)
       <input type="submit" value="Delete" class="btn btn-warning btn-xs" />
     }

@@ -56,7 +56,7 @@ namespace DoctorsOffice.Controllers
     {
       _db.Entry(doctor).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = doctor.DoctorId });
     }
     public ActionResult Delete(int id)
     {
@@ -73,12 +73,12 @@ namespace DoctorsOffice.Controllers
       return RedirectToAction("Index");
     }
     [HttpPost]
-    public ActionResult DeletePatient(int joinId)
+    public ActionResult DeletePatient(int doctorId, int joinId)
     {
       var joinEntry = _db.DoctorPatient.FirstOrDefault(entry => entry.DoctorPatientId == joinId);
       _db.DoctorPatient.Remove(joinEntry);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = doctorId});
     }
     public ActionResult AddPatient(int id)
     {
@@ -94,7 +94,7 @@ namespace DoctorsOffice.Controllers
       _db.DoctorPatient.Add(new DoctorPatient() { PatientId = PatientId, DoctorId = doctor.DoctorId });
       }
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = doctor.DoctorId});
     }
     [HttpPost]
     public ActionResult DeleteSpecialty(int doctorId, int joinId)

@@ -13,7 +13,7 @@ namespace DoctorsOffice.Controllers
 
     public PatientsController(DoctorsOfficeContext db)
     {
-      _db = db;
+      _db = db ;
     }
     public ActionResult Index()
     {
